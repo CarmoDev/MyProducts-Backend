@@ -13,4 +13,9 @@ app.use(cors);
 app.use(routes);
 app.use(errorHandler);
 
-app.listen('https://restapi-myproducts.herokuapp.com', () => console.log('🔥 Server started at http://localhost:3001'));
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, (err) => {
+  if (err) throw err;
+  console.log('%c Server running', 'color: green');
+});
