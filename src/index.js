@@ -15,7 +15,4 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, (err) => {
-  if (err) throw err;
-  console.log('%c Server running', 'color: green');
-});
+app.listen(PORT, () => console.log(`🔥 Server started at ${PORT}`));
