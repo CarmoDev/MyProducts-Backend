@@ -1,11 +1,11 @@
-CREATE DATABASE myproducts; -- Subi
+CREATE DATABASE myproducts;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE IF NOT EXISTS categories (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
   name VARCHAR NOT NULL
-); -- Subi
+);
 
 CREATE TABLE IF NOT EXISTS products (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS products (
   price VARCHAR,
   category_id UUID,
   FOREIGN KEY(category_id) REFERENCES categories(id)
-); -- SUBI
+);
 
 CREATE TABLE Clients (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4,
