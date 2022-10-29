@@ -33,12 +33,12 @@ class ProductController {
       return response.status(400).json({ error: 'Please insert a name' });
     }
 
-    // if (product_name) {
-    //   const productExists = await ProductRepository.findByName(product_name);
-    //   if (productExists) {
-    //     return response.status(400).json({ error: 'This name already been taken' });
-    //   }
-    // }
+    if (product_name) {
+      const productExists = await ProductRepository.findByName(product_name);
+      if (productExists) {
+        return response.status(400).json({ error: 'This name already been taken' });
+      }
+    }
 
     const product = await ProductRepository.create({
       product_name, quantity, price, category_id,

@@ -17,14 +17,14 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 CREATE TABLE Clients (
-  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4,
-  username VARCHAR UNIQUE,
-  email VARCHAR UNIQUE,
-  password VARCHAR (15) NOT NULL
+  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+  username VARCHAR UNIQUE NOT NULL,
+  email VARCHAR UNIQUE NOT NULL,
+  password VARCHAR NOT NULL
 );
 
 CREATE TABLE cart (
-id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4,
+id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
 id_pdt INT (15),
 quant_buy INT (200)
 );

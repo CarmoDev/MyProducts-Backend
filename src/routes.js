@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const categoryController = require('./app/controllers/categoryController');
 const ProductController = require('./app/controllers/ProductController');
+const ClientsController = require('./app/controllers/ClientsController');
 
 const router = Router();
 
@@ -23,5 +24,8 @@ router.get('/categories/:id', categoryController.show);
 router.post('/categories', categoryController.store);
 router.put('/categories/:id', categoryController.update);
 router.delete('/categories/:id', categoryController.delete);
+
+// Clients Routes
+router.get('/Clients', ClientsController.index);
 
 module.exports = router;
