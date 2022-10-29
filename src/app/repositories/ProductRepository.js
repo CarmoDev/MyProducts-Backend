@@ -24,10 +24,10 @@ class ProductsRepository {
   }
 
   async findByName(product_name) {
-    const row = await db.query(`
+    const [row] = await db.query(`
     SELECT * FROM products
-    WHERE product_name = '${product_name}'
-    `);
+    WHERE product_name = $1
+    `, [product_name]);
     return row;
   }
 
