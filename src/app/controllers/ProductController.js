@@ -35,7 +35,8 @@ class ProductController {
 
     if (product_name) {
       const productExists = await ProductRepository.findByName(product_name);
-      if (!productExists) {
+      if (productExists) {
+        console.log(productExists);
         return response.status(400).json({ error: 'This name already been taken' });
       }
     }

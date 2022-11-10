@@ -1,6 +1,7 @@
 CREATE DATABASE myproducts;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE TABLE IF NOT EXISTS categories (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
@@ -16,7 +17,7 @@ CREATE TABLE IF NOT EXISTS products (
   FOREIGN KEY(category_id) REFERENCES categories(id)
 );
 
-CREATE TABLE Clients (
+CREATE TABLE IF NOT EXISTS clients (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
   username VARCHAR UNIQUE NOT NULL,
   email VARCHAR UNIQUE NOT NULL,
