@@ -29,16 +29,10 @@ class ProductController {
       product_name, quantity, price, category_id,
     } = request.body;
 
+    console.log(product_name, quantity, price, category_id);
+
     if (!product_name) {
       return response.status(400).json({ error: 'Please insert a name' });
-    }
-
-    if (product_name) {
-      const productExists = await ProductRepository.findByName(product_name);
-      if (productExists) {
-        console.log(productExists);
-        return response.status(400).json({ error: 'This name already been taken' });
-      }
     }
 
     const product = await ProductRepository.create({
