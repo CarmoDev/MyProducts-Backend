@@ -9,6 +9,13 @@ class ClientsController {
     response.json(clients);
   }
 
+  async findUserById(request, response) {
+    const { id } = request.params;
+    const client = await clientsRepository.findClientById(id);
+
+    response.json(client);
+  }
+
   async auth(request, response) {
     const { email, password } = request.body;
     const user = await clientsRepository.findClient(email, password);

@@ -16,6 +16,13 @@ class ClientsRepository {
     return row;
   }
 
+  async findClientById(id) {
+    const row = await db.query(`
+      SELECT * FROM users WHERE id = '${id}'
+    `);
+    return row;
+  }
+
   async createClient(username, email, password) {
     const row = await db.query(`
     INSERT INTO users(username, email, password)

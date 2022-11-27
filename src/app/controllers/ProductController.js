@@ -23,20 +23,32 @@ class ProductController {
     response.json(Product);
   }
 
+  async findByUser(request, response) {
+    const { id } = request.params;
+    const { orderBy } = request.query;
+
+    const Product = await ProductRepository.findByUser(id, orderBy);
+
+    if (!Product) {
+      // 404: Not Found
+      return response.status(404).json({ error: 'Product not found' });
+    }
+
+    response.json(Product);
+  }
+
   async store(request, response) {
     // Cria novo registro
     const {
-      product_name, quantity, price, category_id,
+      product_name, quantity, price, category_id, user_id,
     } = request.body;
-
-    console.log(product_name, quantity, price, category_id);
 
     if (!product_name) {
       return response.status(400).json({ error: 'Please insert a name' });
     }
 
     const product = await ProductRepository.create({
-      product_name, quantity, price, category_id,
+      product_name, quantity, price, category_id, user_id,
     });
 
     response.status(201).json(product);

@@ -15,9 +15,12 @@ CREATE TABLE IF NOT EXISTS products (
   price VARCHAR,
   category_id UUID,
   FOREIGN KEY(category_id) REFERENCES categories(id)
+
+  user_id UUID,
+  FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
-CREATE TABLE IF NOT EXISTS clients (
+CREATE TABLE IF NOT EXISTS users (
   id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
   username VARCHAR UNIQUE NOT NULL,
   email VARCHAR UNIQUE NOT NULL,

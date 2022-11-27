@@ -5,9 +5,11 @@ class ProductsRepository {
     const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
     const rows = await db.query(`
     SELECT products.*,
+    users.username AS username,
     categories.name AS category_name
     FROM products
     LEFT JOIN categories ON products.category_id = categories.id
+    LEFT JOIN users ON products.user_id = users.id
     ORDER BY products.product_name ${direction}
     `);
     return rows;
@@ -31,12 +33,22 @@ class ProductsRepository {
     return row;
   }
 
+  async findByUser(user_id, orderBy = 'ASC') {
+    const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+    const row = await db.query(`
+    SELECT * FROM products
+    WHERE user_id = '${user_id}'
+    ORDER BY products.product_name ${direction}
+    `);
+    return row;
+  }
+
   async create({
-    product_name, quantity, price, category_id,
+    product_name, quantity, price, category_id, user_id,
   }) {
     const row = await db.query(`
-    INSERT INTO products(product_name, quantity, price, category_id)
-    VALUES('${product_name}', '${quantity}', '${price}', '${category_id}')
+    INSERT INTO products(product_name, quantity, price, category_id, user_id)
+    VALUES('${product_name}', '${quantity}', '${price}', '${category_id}', '${user_id}')
     `);
 
     return row;

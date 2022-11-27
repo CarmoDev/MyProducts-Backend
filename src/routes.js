@@ -15,6 +15,10 @@ router.post('/authenticate', ClientsController.auth);
 // Autenticação
 router.use(authMiddleware);
 
+// User Routes
+router.get('/users/:id', ClientsController.findUserById);
+
+router.get('/profile/:id', ProductController.findByUser);
 // Products Routes
 router.get('/products', ProductController.index);
 
