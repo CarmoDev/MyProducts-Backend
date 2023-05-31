@@ -6,7 +6,8 @@
   "author": "Jefferson Santos",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "nodemon src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

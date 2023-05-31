@@ -1,7 +1,8 @@
 const { Client } = require('pg');
+require('dotenv').config();
 
 const client = new Client({
-  connectionString: 'postgres://umlcuenj:XKj6BZ5kMofX5-r22x3xkikC3NQsEWlP@babar.db.elephantsql.com/umlcuenj',
+  connectionString: process.env.DATABASE_URL,
 });
 
 client.connect();
